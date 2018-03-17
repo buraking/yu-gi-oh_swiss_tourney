@@ -12,6 +12,6 @@ class ParticipantsController < ApplicationController
   private
 
   def participant_params
-    params.require(:participant).permit(:tournament_id, :user_id)
+    params.require(:participant).permit(:tournament_id, :user_id, :deck_id)
   end
 end

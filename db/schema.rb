@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_17_111543) do
+ActiveRecord::Schema.define(version: 2018_03_17_171613) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2018_03_17_111543) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "deck_id"
+    t.index ["deck_id"], name: "index_participants_on_deck_id"
     t.index ["tournament_id"], name: "index_participants_on_tournament_id"
     t.index ["user_id"], name: "index_participants_on_user_id"
   end

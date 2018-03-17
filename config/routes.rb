@@ -14,10 +14,7 @@ Rails.application.routes.draw do
   resources :participants
   resources :rounds
   resources :decks
-<<<<<<< Updated upstream
   resources :matches
-=======
->>>>>>> Stashed changes
 
   root to: 'sessions#new'
 end

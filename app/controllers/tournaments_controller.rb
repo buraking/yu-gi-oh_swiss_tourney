@@ -1,5 +1,5 @@
 class TournamentsController < ApplicationController
   def index
-    render json: Tournament.all
+    @tournaments = Tournament.all
   end
 end

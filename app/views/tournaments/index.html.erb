@@ -1,11 +1,16 @@
-<div class="container-fluid">
+<table>
+  <thead>
+    <tr>
+      <th>Tournament name:</th>
+      <th>Started at:</th>
+    </tr>
+  </thead>
   <tbody>
     <% @tournaments.each do |tournament| %>
       <tr>
         <td><%= tournament.name %></td>
         <td><%= tournament.started_at %></td>
       </tr>
-    </br>
     <% end %>
   </tbody>
-</div>
+</table>

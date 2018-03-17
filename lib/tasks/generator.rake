@@ -20,11 +20,24 @@ namespace :generator do
   end
 
   task participants: :environment do
-    fail 'You should set a TOURNAMENT_ID' unless ENV['TOURNAMENT_ID'].present?
+    raise 'You should set a TOURNAMENT_ID' unless ENV['TOURNAMENT_ID'].present?
     tournament = Tournament.find(ENV['TOURNAMENT_ID'])
     tournament.limit.times do
       tournament.participants.create(
         user_id: User.order('RANDOM()').first.id
+      )
+    end
+  end
+
+  task matches: :environment do
+    raise 'You should set a TOURNAMENT_ID and a ROUND' unless (ENV['TOURNAMENT_ID'].present? && ENV['ROUND'].present?)
+    tournament = Tournament.find(ENV['TOURNAMENT_ID'])
+    round = tournament.rounds.find_by!(number: ENV['ROUND'])
+    user_ids = tournament.participants.pluck(:user_id)
+    while user_ids.any?
+      round.matches.create(
+        challenger_id: user_ids.delete(user_ids.sample),
+        challenged_id: user_ids.delete(user_ids.sample)
       )
     end
   end

@@ -1,8 +1,9 @@
-<%= form_tag signups_path do %>
+<%= form_for @user,url: signups_path do |f| %>
     <%= label_tag(:n, "Name: ") %>
-    <%= text_field_tag :name %><br>
+    <%= f.text_field :name %><br>
     <%= label_tag(:n, "Email: ") %>
-    <%= text_field_tag :email %><br>
+    <%= f.text_field :email %><br>
+    <%= f.object.errors.full_messages.join(", ") if f.object.errors.any?%><br>
     <%= submit_tag 'Sign up' %>
     <%end%>
 

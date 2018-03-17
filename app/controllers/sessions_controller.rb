@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
     redirect_to tournaments_path
   end
 
-
   def toSignUp
     redirect_to signups_path
   end
@@ -17,5 +16,4 @@ class SessionsController < ApplicationController
     session[:current_user_id] = nil
     redirect_to(root_url)
   end
-  
 end

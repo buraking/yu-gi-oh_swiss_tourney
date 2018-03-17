@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  started_at: 2018-03-17 12:05:42
+  round: one
+  challenger: 
+  challenged: 
+
+two:
+  started_at: 2018-03-17 12:05:42
+  round: two
+  challenger: 
+  challenged: 

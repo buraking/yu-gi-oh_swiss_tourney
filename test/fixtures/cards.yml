@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  attribute: MyString
+  level: 
+  number: MyString
+  type: 
+  description: MyString
+  attack: 
+  defense: 
+  prize: 9.99
+
+two:
+  name: MyString
+  attribute: MyString
+  level: 
+  number: MyString
+  type: 
+  description: MyString
+  attack: 
+  defense: 
+  prize: 9.99

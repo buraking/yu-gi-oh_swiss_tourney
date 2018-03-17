@@ -8,7 +8,7 @@ class SignupsController < ApplicationController
     end
 
     def toSignIn
-      redirect_to root_path
+      redirect_to tournaments_path
     end
 
     def toSignUp

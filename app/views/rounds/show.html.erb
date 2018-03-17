@@ -1,0 +1,9 @@
+<h1>Round <%= @round.number %></h1>
+
+<% @round.matches.each do |match| %>
+  <div>
+    <%= link_to match_path(match) do %>
+      <%= match.challenger.name %> vs. <%= match.challenged.name %>
+    <% end %>
+  </div>
+<% end %>

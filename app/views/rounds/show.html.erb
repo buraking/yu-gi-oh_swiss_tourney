@@ -1,0 +1,7 @@
+<h1>Round <%= @round.number %></h1>
+
+<% @round.matches.each do |match| %>
+  <div>
+    <%= match.challenger.name %> vs. <%= match.challenged.name %>
+  </div>
+<% end %>

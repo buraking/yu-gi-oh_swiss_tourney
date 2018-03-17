@@ -8,7 +8,7 @@
   <tbody>
     <% @tournaments.each do |tournament| %>
       <tr>
-        <td><%= tournament.name %></td>
+        <td><%= link_to tournament.name, tournament_path(tournament.id) %></td>
         <td><%= tournament.started_at %></td>
       </tr>
     <% end %>

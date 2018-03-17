@@ -18,4 +18,14 @@ namespace :generator do
       )
     end
   end
+
+  task participants: :environment do
+    fail 'You should set a TOURNAMENT_ID' unless ENV['TOURNAMENT_ID'].present?
+    tournament = Tournament.find(ENV['TOURNAMENT_ID'])
+    tournament.limit.times do
+      tournament.participants.create(
+        user_id: User.order('RANDOM()').first.id
+      )
+    end
+  end
 end

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :tournaments
   resources :users
+  resources :participants
 
   root to: 'sessions#new'
 end

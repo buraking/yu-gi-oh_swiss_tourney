@@ -1,0 +1,12 @@
+<h1>
+  <%= @match.challenger.name %> vs. <%= @match.challenged.name %>
+</h1>
+<div>
+  <% if @match.winner %>
+    <%= @match.winner.user.name %>
+  <% else %>
+    <h2>Who won the match?</h2>
+    <%= button_to @match.challenger.name, match_path(@match, winner_id: @match.challenger.id), method: :put %>
+    <%= button_to @match.challenged.name, match_path(@match, winner_id: @match.challenged.id), method: :put  %>
+  <% end %>
+</div>

@@ -2,6 +2,8 @@
 
 <% @round.matches.each do |match| %>
   <div>
-    <%= match.challenger.name %> vs. <%= match.challenged.name %>
+    <%= link_to match_path(match) do %>
+      <%= match.challenger.name %> vs. <%= match.challenged.name %>
+    <% end %>
   </div>
 <% end %>

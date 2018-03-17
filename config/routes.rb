@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :signups
   resources :participants
   resources :rounds
+  resources :matches
 
 
   root to: 'sessions#new'

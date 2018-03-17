@@ -1,0 +1,11 @@
+<%= form_tag signups_path do %>
+    <%= label_tag(:n, "Name: ") %>
+    <%= text_field_tag :name %><br>
+    <%= label_tag(:n, "Email: ") %>
+    <%= text_field_tag :email %><br>
+    <%= submit_tag 'Sign up' %>
+    <%end%>
+
+<%= button_to "Back to sign in", root_path, method: "get" %>
+
+

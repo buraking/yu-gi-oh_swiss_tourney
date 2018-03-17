@@ -1,5 +1,7 @@
 class Tournament < ApplicationRecord
   has_many :rounds
+  has_many :matches, through: :rounds
+  has_many :winners, through: :matches
   has_many :participants
   has_many :users, through: :participants
 

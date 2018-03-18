@@ -15,6 +15,10 @@ class DecksController < ApplicationController
     redirect_to decks_path
   end
 
+  def show
+    @deck = Deck.find(params[:id])
+  end
+
   private
 
   def deck_params

@@ -17,6 +17,10 @@ class Tournament < ApplicationRecord
     (257..512) => 9
   }.freeze
 
+  def reached_limit?
+    participants.count >= limit
+  end
+
   private
 
   def setup_rounds

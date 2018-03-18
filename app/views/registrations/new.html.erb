@@ -1,17 +1,17 @@
 <div class="row">
   <div class="col-12">
-    <%= image_tag('logo.png', class: 'img-fluid mt-5 mb-3') %>
+    <%= image_tag('logo.png', class: 'img-fluid mb-4') %>
 
     <div class="text-center">
-      <%= form_for @user, url: signups_path, html: { class: 'col-10 offset-1 mt-3' } do |f| %>
+      <%= form_for @user, url: registrations_path, html: { class: 'col-10 offset-1 mt-4' } do |f| %>
         <div class="form-group">
           <%= f.text_field :name , placeholder: 'Name', class: 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
+          <%= f.text_field :email, placeholder: 'E-mail', class: 'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.submit 'Sign up', class: 'btn' %>
+          <%= f.submit 'Sign up', class: 'btn btn-secondary' %>
         </div>
       <% end %>
       <%= link_to "Back to sign in", root_path %>

@@ -15,7 +15,7 @@ class User < ApplicationRecord
     name.split.first
   end
 
-  def gravatar_url
-    "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?s=30&d=robohash"
+  def gravatar_url(size: 30)
+    "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?s=#{size}&d=robohash"
   end
 end

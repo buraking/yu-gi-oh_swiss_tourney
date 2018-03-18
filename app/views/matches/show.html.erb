@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-1">
   <div class="col-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -18,18 +18,93 @@
 
     <div>
       <% if @match.winner %>
-        <%= @match.winner.user.name %>
-        <i class="fas fa-chess-king"></i>
-        vs.
-        <%= @match.loser.name %>
-      <% else %>
-        <h2>Who won?</h2>
         <div class="row">
-          <div class="col-6">
-            <%= button_to @match.challenger.name, match_path(@match, winner_id: @match.challenger.id), method: :put, class: 'btn btn-block' %>
+          <div class="col-12 mt-3 mb-3">
+            <div class="row">
+              <div class="col-9">
+                <div class="text-right">
+                  <h3>
+                    <%= link_to @match.challenger.name, @match.challenger %>
+                    <% if @match.winner.user == @match.challenger %>
+                      <i class="fas fa-chess-king" style="color: gold"></i>
+                    <% end %>
+                  </h3>
+                  <span><%= link_to @match.challenger_deck.name, @match.challenger_deck %></span>
+                </div>
+              </div>
+              <div class="col-3">
+                <%= image_tag @match.challenger.gravatar_url(size: 100), class: 'rounded img-fluid' %>
+              </div>
+            </div>
           </div>
-          <div class="col-6">
-            <%= button_to @match.challenged.name, match_path(@match, winner_id: @match.challenged.id), method: :put, class: 'btn btn-block' %>
+
+          <div class="col-12">
+            <h1 class="text-center">vs.</h1>
+          </div>
+
+          <div class="col-12 mt-3">
+            <div class="row">
+              <div class="col-3">
+                <%= image_tag @match.challenged.gravatar_url(size: 100), class: 'rounded img-fluid' %>
+              </div>
+              <div class="col-9">
+                <div class="text-left">
+                  <h3>
+                    <%= link_to @match.challenged.name, @match.challenged %>
+                    <% if @match.winner.user == @match.challenged %>
+                      <i class="fas fa-chess-king" style="color: gold"></i>
+                    <% end %>
+                  </h3>
+                  <span><%= link_to @match.challenged_deck.name, @match.challenged_deck %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div class="row">
+          <div class="col-12 mt-3 mb-3">
+            <div class="row">
+              <div class="col-9">
+                <div class="text-right">
+                  <h3><%= link_to @match.challenger.name, @match.challenger %></h3>
+                  <span><%= link_to @match.challenger_deck.name, @match.challenger_deck %></span>
+                </div>
+              </div>
+              <div class="col-3">
+                <%= image_tag @match.challenger.gravatar_url(size: 100), class: 'rounded img-fluid' %>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <h1 class="text-center">vs.</h1>
+          </div>
+
+          <div class="col-12 mt-3">
+            <div class="row">
+              <div class="col-3">
+                <%= image_tag @match.challenged.gravatar_url(size: 100), class: 'rounded img-fluid' %>
+              </div>
+              <div class="col-9">
+                <div class="text-left">
+                  <h3><%= link_to @match.challenged.name, @match.challenged %></h3>
+                  <span><%= link_to @match.challenged_deck.name, @match.challenged_deck %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert alert-transparent mb-0 fixed-bottom">
+          <h5 class="text-center">Who won the match?</h5>
+          <div class="row">
+            <div class="col-6">
+              <%= button_to @match.challenger.name, match_path(@match, winner_id: @match.challenger.id), method: :put, class: 'btn btn-dark btn-block' %>
+            </div>
+            <div class="col-6">
+              <%= button_to @match.challenged.name, match_path(@match, winner_id: @match.challenged.id), method: :put, class: 'btn btn-dark btn-block' %>
+            </div>
           </div>
         </div>
       <% end %>

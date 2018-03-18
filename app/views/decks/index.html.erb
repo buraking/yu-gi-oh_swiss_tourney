@@ -1,28 +1,30 @@
-<div class="row">
+<div class="row mt-1">
   <div class="col-12">
     <h1>My decks</h1>
   </div>
 
   <div class="col-12">
-    <%= link_to 'New deck', new_deck_path, class: 'btn btn-primary' %>
+    <div class="list-group">
+      <% @decks.each do |deck| %>
+        <%= link_to deck, class: 'list-group-item list-group-item-action bg-transparent text-white' do %>
+          <h5 class="mb-1">
+            <%= deck.name %>
+            <div class="float-right">
+              <small><%= deck.cards.count %> cards</small>
+              <i class="fas fa-angle-right ml-2"></i>
+            </div>
+          </h5>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="col-12">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @decks.each do |deck| %>
-          <tr>
-            <td>
-              <%= link_to deck.name, deck %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="fixed-bottom">
+    <div class="alert alert-transparent mb-0">
+      <%= link_to new_deck_path, class: 'btn btn-block btn-dark' do %>
+        <i class="fas fa-plus"></i>
+        <span class="ml-2">Add a new deck</span>
+      <% end %>
+    </div>
   </div>
 </div>

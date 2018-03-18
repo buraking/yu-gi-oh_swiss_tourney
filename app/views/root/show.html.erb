@@ -1,0 +1,37 @@
+<div class="row mt-1">
+  <div class="col-12">
+    <div class="mb-3">
+      <h1>Welcome <%= current_user.first_name %>!</h1>
+      <h5 class="text-muted">
+        What can we help you today?
+      </h5>
+    </div>
+
+    <div class="list-group">
+      <%= link_to decks_path, class: 'list-group-item list-group-item-action bg-transparent text-white' do %>
+        <h5 class="mb-0">
+          Manage my decks
+          <div class="float-right">
+            <i class="fas fa-angle-right"></i>
+          </div>
+        </h5>
+      <% end %>
+      <%= link_to tournaments_path, class: 'list-group-item list-group-item-action bg-transparent text-white' do %>
+        <h5 class="mb-0">
+          Subscribe to a tournament
+          <div class="float-right">
+            <i class="fas fa-angle-right"></i>
+          </div>
+        </h5>
+      <% end %>
+      <%= link_to current_user, class: 'list-group-item list-group-item-action bg-transparent text-white' do %>
+        <h5 class="mb-0">
+          Check my profile
+          <div class="float-right">
+            <i class="fas fa-angle-right"></i>
+          </div>
+        </h5>
+      <% end %>
+    </div>
+  </div>
+</div>

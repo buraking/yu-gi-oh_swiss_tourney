@@ -1,21 +1,37 @@
-<div class="row">
+<div class="row mt-1">
   <div class="col-12 mb-3">
     <h1><%= @tournament.name %></h1>
     <div class="text-muted">Start time: <%= @tournament.started_at.strftime('%m/%d %H:%M') %></div>
     <div class="text-muted">Limit: <%= @tournament.participants.count %>/<%= @tournament.limit %></div>
   </div>
   <div class="col-12">
-    <% if @tournament.users.find_by(id: current_user.id) %>
+    <% if @tournament.users.find_by(id: current_user.id) || @tournament.reached_limit? %>
+      <div class="list-group mb-3">
+        <%= link_to tournament_leaderboards_path(@tournament), class: 'list-group-item list-group-item-action bg-transparent text-white' do %>
+          <h5 class="mb-0">
+            Leaderboard
+            <div class="float-right">
+              <i class="fas fa-angle-right ml-2"></i>
+            </div>
+          </h5>
+        <% end %>
+      </div>
+
       <h2>
         Rounds
       </h2>
-      <table class="table">
+      <div class="list-group mb-3">
         <% @tournament.rounds.each do |round| %>
-          <tr>
-            <td><%= link_to "Round #{round.number}", round %></td>
-          </tr>
+          <%= link_to round, class: 'list-group-item list-group-item-action bg-transparent text-white' do %>
+            <h5 class="mb-0">
+              Round <%= round.number %>
+              <div class="float-right">
+                <i class="fas fa-angle-right ml-2"></i>
+              </div>
+            </h5>
+          <% end %>
         <% end %>
-      </table>
+      </div>
 
       <h2>
         Participants

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-1">
   <div class="col-12">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
@@ -19,11 +19,11 @@
           <tr>
             <td class="text-center">
               <%= link_to match_path(match) do %>
-                <%= image_tag(match.challenger.gravatar_url, class: 'rounded') %>
+                <%= image_tag(match.challenger.gravatar_url, class: 'rounded mr-2') %>
                 <%= match.challenger.name %>
                 vs.
                 <%= match.challenged.name %>
-                <%= image_tag(match.challenged.gravatar_url, class: 'rounded') %>
+                <%= image_tag(match.challenged.gravatar_url, class: 'rounded ml-2') %>
               <% end %>
             </td>
           </tr>

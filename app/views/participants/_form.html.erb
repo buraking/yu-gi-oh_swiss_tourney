@@ -2,15 +2,30 @@
   <%= f.hidden_field :tournament_id %>
   <%= f.hidden_field :user_id %>
 
-  <div class="form-group">
-    <%= f.submit 'Subscribe', class: 'btn' %>
-  </div>
+  <% if current_user.decks.any? %>
+    <div class="alert alert-transparent fixed-bottom mb-0">
+      <%= f.submit 'Subscribe', class: 'btn btn-block btn-dark' %>
+    </div>
 
-  <% current_user.decks.each_with_index do |deck, index| %>
-    <div class="form-group">
-      <%= label_tag do %>
-        <%= f.radio_button :deck_id, deck.id, checked: index == 0 %>
-        <%= deck.name %>
+    <h2>
+      Choose your deck:
+    </h2>
+    <% current_user.decks.each_with_index do |deck, index| %>
+      <div class="form-group">
+        <%= label_tag do %>
+          <%= f.radio_button :deck_id, deck.id, checked: index == 0 %>
+          <%= deck.name %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="alert alert-danger">
+      You cannot compete without a deck.
+    </div>
+    <div class="alert alert-transparent fixed-bottom mb-0">
+      <%= link_to new_deck_path, class: 'btn btn-block btn-dark' do %>
+        <i class="fas fa-plus"></i>
+        <span class="pl-2">Create a deck</span>
       <% end %>
     </div>
   <% end %>

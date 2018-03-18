@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   resources :tournaments
   resources :users
 
-  root to: 'sessions#new'
+  root to: 'tournaments#index'
 end

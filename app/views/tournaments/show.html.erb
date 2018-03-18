@@ -1,25 +1,36 @@
-<h3>This is <%= @tournament.name %></h3>
-<% if !@tournament.users.find_by(id: current_user.id) %>
-  <%= form_for Participant.new(tournament_id: @tournament.id, user_id: current_user.id) do |f| %>
-    <%= f.hidden_field :tournament_id %>
-    <%= f.hidden_field :user_id %>
-    <%= f.submit 'subscribe' %>
-    <% current_user.decks.each do |deck|  %>
-      <div class="">
-        <%= f.radio_button :deck_id, deck.id  %>
-        <%= deck.name %>
-      </div>
-    <% end %>
-  <% end %>
-<% else %>
-  <%= link_to 'View Deck', deck_path(current_user.id) %>
-  <table>
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.name %></td>
-        </tr>
+<div class="row">
+  <div class="col-12">
+    <h1><%= @tournament.name %></h1>
+  </div>
+  <div class="col-12">
+    <% if !@tournament.users.find_by(id: current_user.id) %>
+      <%= form_for Participant.new(tournament_id: @tournament.id, user_id: current_user.id) do |f| %>
+        <%= f.hidden_field :tournament_id %>
+        <%= f.hidden_field :user_id %>
+        <%= f.submit 'subscribe' %>
+        <% current_user.decks.each do |deck|  %>
+          <div class="">
+            <%= f.radio_button :deck_id, deck.id  %>
+            <%= deck.name %>
+          </div>
+        <% end %>
       <% end %>
-    </tbody>
-  </table>
-<% end %>
+    <% else %>
+      <h2>
+        Participants
+      </h2>
+      <table class="table">
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= image_tag user.gravatar_url, class: 'rounded' %>
+                <span class="pl-2"><%= user.name %></span>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

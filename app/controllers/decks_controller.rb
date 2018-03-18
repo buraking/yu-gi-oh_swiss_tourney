@@ -1,15 +1,18 @@
 class DecksController < ApplicationController
+  before_action :authenticate_user
+
+  def index
+    @decks = current_user.decks.all
+  end
+
   def new
     @deck = current_user.decks.new
   end
 
   def create
     @decks = current_user.decks.create(deck_params)
-    redirect_to tournaments_path
-  end
-
-  def show
-    
+    flash[:success] = 'Your deck was successfully created.'
+    redirect_to decks_path
   end
 
   private

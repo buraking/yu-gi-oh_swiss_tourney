@@ -1,6 +1,8 @@
 class TournamentsController < ApplicationController
+  before_action :authenticate_user
+
   def index
-    @tournaments = Tournament.all
+    @tournaments = Tournament.where('started_at > ?', Time.zone.now).order(started_at: :asc)
   end
 
   def show

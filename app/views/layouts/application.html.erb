@@ -10,7 +10,7 @@
 
   <body>
     <% if current_user %>
-      <%= link_to 'Log out', session_path(1), method: :delete %>
+      <%= render 'layouts/navigation' %>
     <% end %>
 
     <div class="container-fluid">
@@ -19,6 +19,12 @@
           <%= yield %>
         </div>
       </div>
+
+      <% flash.each do |key, message| %>
+        <div class="alert alert-<%= key %> fixed-bottom mb-0">
+          <%= message %>
+        </div>
+      <% end %>
     </div>
   </body>
 </html>

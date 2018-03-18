@@ -1,0 +1,38 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <%= image_tag 'nav_logo.png', height: 30 %>
+    Regional Qualifiers 2018
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to root_path, class: 'nav-link' do %>
+          <i class="fas fa-globe"></i>
+          Home
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to decks_path, class: 'nav-link' do %>
+          <i class="fas fa-inbox"></i>
+          My Decks
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to tournaments_path, class: 'nav-link' do %>
+          <i class="fas fa-trophy"></i>
+          Tournaments
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to session_path(1), method: :delete, class: 'nav-link' do %>
+          <i class="fas fa-sign-out-alt"></i>
+          Log out
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>

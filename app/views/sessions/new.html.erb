@@ -1,9 +1,14 @@
 <%= image_tag('logo.png') %>
+
 <h1>Regional Qualifiers</h1>
 
 <%= form_tag sessions_path do %>
-  <%= text_field_tag :email %><br>
+  <div>
+    <%= text_field_tag :email %>
+  </div>
   <%= submit_tag 'Sign in' %>
 <% end %>
 
 <%= link_to 'Sign up', new_signup_path %>
+
+<i class="fas fa-heart"></i>

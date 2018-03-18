@@ -1,6 +1,9 @@
+<%= image_tag('logo.png') %>
+<h1>Regional Qualifiers</h1>
+
 <%= form_tag sessions_path do %>
   <%= text_field_tag :email %><br>
   <%= submit_tag 'Sign in' %>
 <% end %>
 
-<%= button_to "Sign up", new_signup_path, method: "get" %>
+<%= link_to 'Sign up', new_signup_path %>

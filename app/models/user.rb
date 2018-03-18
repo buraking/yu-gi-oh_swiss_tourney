@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_many :participants
   has_many :tournaments, through: :participants
 
+  def first_name
+    name.split.first
+  end
+
   def gravatar_url
     "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?s=30&d=robohash"
   end

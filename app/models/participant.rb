@@ -1,6 +1,7 @@
 class Participant < ApplicationRecord
   belongs_to :tournament
   belongs_to :user
+  belongs_to :deck
 
   after_create :create_matches
 

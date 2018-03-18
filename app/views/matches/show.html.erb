@@ -1,12 +1,38 @@
-<h1>
-  <%= @match.challenger.name %> vs. <%= @match.challenged.name %>
-</h1>
-<div>
-  <% if @match.winner %>
-    <%= @match.winner.user.name %>
-  <% else %>
-    <h2>Who won the match?</h2>
-    <%= button_to @match.challenger.name, match_path(@match, winner_id: @match.challenger.id), method: :put %>
-    <%= button_to @match.challenged.name, match_path(@match, winner_id: @match.challenged.id), method: :put  %>
-  <% end %>
+<div class="row">
+  <div class="col-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to @match.round.tournament.name, @match.round.tournament %></li>
+        <li class="breadcrumb-item"><%= link_to "Round #{@match.round.number}", @match.round %></li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <%= @match.challenger.first_name %> vs. <%= @match.challenged.first_name %>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="col-12">
+    <h1>
+      <%= @match.challenger.first_name %> vs. <%= @match.challenged.first_name %>
+    </h1>
+
+    <div>
+      <% if @match.winner %>
+        <%= @match.winner.user.name %>
+        <i class="fas fa-chess-king"></i>
+        vs.
+        <%= @match.loser.name %>
+      <% else %>
+        <h2>Who won?</h2>
+        <div class="row">
+          <div class="col-6">
+            <%= button_to @match.challenger.name, match_path(@match, winner_id: @match.challenger.id), method: :put, class: 'btn btn-block' %>
+          </div>
+          <div class="col-6">
+            <%= button_to @match.challenged.name, match_path(@match, winner_id: @match.challenged.id), method: :put, class: 'btn btn-block' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

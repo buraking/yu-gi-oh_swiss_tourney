@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :sessions
   resources :sets
   resources :signups
-  resources :tournaments
+  resources :tournaments do
+    resources :leaderboards
+  end
   resources :users
 
   root to: 'tournaments#index'

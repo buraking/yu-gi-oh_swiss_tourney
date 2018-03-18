@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-12">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to @tournament.name, @tournament %></li>
+        <li class="breadcrumb-item active" aria-current="page">
+          Leaderboards
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="col-12">
+    <h1>Leaderboards</h1>
+  </div>
+
+  <div class="col-12">
+    <table class="table">
+      <% @score.each.with_index do |(user, value), index| %>
+        <tr>
+          <td style="width: 1%;">
+            #<%= index + 1 %>
+          </td>
+          <td>
+            <%= image_tag user.gravatar_url, class: 'rounded' %>
+            <span class="pl-2"><%= user.name %></span>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

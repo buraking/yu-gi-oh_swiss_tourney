@@ -1,0 +1,12 @@
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>    
+  </div>
+<% end %>
+
+<%= form_tag sets_path do %>
+  <%= text_field_tag :name %>
+  <%= submit_tag 'Submit', class: 'btn' %>
+<% end %>
+
+<%= image_tag "http://yugiohprices.com/api/card_image/" + Card.all.sample.name %>

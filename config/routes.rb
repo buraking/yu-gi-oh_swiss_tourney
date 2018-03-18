@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :participants
   resources :rounds
   resources :sessions
+  resources :sets
   resources :signups
   resources :tournaments
   resources :users

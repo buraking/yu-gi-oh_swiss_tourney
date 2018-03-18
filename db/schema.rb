@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_17_171613) do
+ActiveRecord::Schema.define(version: 2018_03_18_095255) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
-    t.string "attribute"
+    t.string "card_attribute"
     t.integer "level"
     t.string "number"
-    t.string "type"
+    t.string "card_type"
     t.string "description"
     t.integer "attack"
     t.integer "defense"
-    t.decimal "prize"
+    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

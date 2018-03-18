@@ -5,8 +5,9 @@
   </div>
   <div>
     <%= f.label :email %>
-    <%= f.text_field :email %>    
+    <%= f.text_field :email %>
   </div>
   <%= f.submit 'Sign up' %>
 <% end %>
+<%= javascript_pack_tag 'hello_react' %>
 <%= link_to "Back to sign in", root_path %>

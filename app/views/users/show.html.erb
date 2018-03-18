@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-12">
+    <div class="mt-3">
+      <h5><%= image_tag @user.gravatar_url, class: 'rounded' %>
+      <%= @user.name %></h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tournaments</th>
+            <th>Decks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @user.tournaments.each do |tournament| %>
+              <th><%= link_to tournament.name, tournament_path(tournament.id) %></th>
+            <% end %>
+            <% @user.decks.each do |deck| %>
+              <th><%= deck.name %></th>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

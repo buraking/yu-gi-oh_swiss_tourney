@@ -28,6 +28,12 @@
         <% end %>
       </li>
       <li class="nav-item">
+        <%= link_to user_path(current_user.id), class: 'nav-link' do %>
+          <i class="fas fa-user"></i>
+          profile
+        <% end %>
+      </li>
+      <li class="nav-item">
         <%= link_to session_path(1), method: :delete, class: 'nav-link' do %>
           <i class="fas fa-sign-out-alt"></i>
           Log out

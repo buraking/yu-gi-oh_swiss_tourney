@@ -8,6 +8,8 @@ class User < ApplicationRecord
     format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i, message: 'Specify valid email'}
   has_many :matches
   has_many :decks
+  has_many :participants
+  has_many :tournaments, through: :participants
 
   def first_name
     name.split.first

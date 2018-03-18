@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :matches
   has_many :decks
 
+  def first_name
+    name.split.first
+  end
+
   def gravatar_url
     "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?s=30&d=robohash"
   end

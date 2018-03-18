@@ -1,36 +1,43 @@
 <div class="row">
-  <div class="col-12">
+  <div class="col-12 mb-3">
     <h1><%= @tournament.name %></h1>
+    <div class="text-muted">Start time: <%= @tournament.started_at.strftime('%m/%d %H:%M') %></div>
+    <div class="text-muted">Limit: <%= @tournament.participants.count %>/<%= @tournament.limit %></div>
   </div>
   <div class="col-12">
-    <% if !@tournament.users.find_by(id: current_user.id) %>
-      <%= form_for Participant.new(tournament_id: @tournament.id, user_id: current_user.id) do |f| %>
-        <%= f.hidden_field :tournament_id %>
-        <%= f.hidden_field :user_id %>
-        <%= f.submit 'subscribe' %>
-        <% current_user.decks.each do |deck|  %>
-          <div class="">
-            <%= f.radio_button :deck_id, deck.id  %>
-            <%= deck.name %>
-          </div>
+    <% if @tournament.users.find_by(id: current_user.id) %>
+      <h2>
+        Rounds
+      </h2>
+      <table class="table">
+        <% @tournament.rounds.each do |round| %>
+          <tr>
+            <td><%= link_to "Round #{round.number}", round %></td>
+          </tr>
         <% end %>
-      <% end %>
-    <% else %>
+      </table>
+
       <h2>
         Participants
       </h2>
       <table class="table">
         <tbody>
-          <% @users.each do |user| %>
+          <% @tournament.participants.includes(:user, :deck).each do |participant| %>
             <tr>
+              <td style="width: 1%">
+                <%= image_tag participant.user.gravatar_url, class: 'rounded' %>
+              </td>
               <td>
-                <%= image_tag user.gravatar_url, class: 'rounded' %>
-                <span class="pl-2"><%= user.name %></span>
+                  <%= participant.user.name %><br>
+                  <em class="text-muted"><%= participant.deck.name %></em>
+                </div>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
+    <% else %>
+      <%= render 'participants/form', tournament: @tournament, user: current_user %>
     <% end %>
   </div>
 </div>

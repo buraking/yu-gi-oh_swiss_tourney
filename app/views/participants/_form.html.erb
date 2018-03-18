@@ -1,0 +1,17 @@
+<%= form_for Participant.new(tournament_id: tournament.id, user_id: user.id) do |f| %>
+  <%= f.hidden_field :tournament_id %>
+  <%= f.hidden_field :user_id %>
+
+  <div class="form-group">
+    <%= f.submit 'Subscribe', class: 'btn' %>
+  </div>
+
+  <% current_user.decks.each_with_index do |deck, index| %>
+    <div class="form-group">
+      <%= label_tag do %>
+        <%= f.radio_button :deck_id, deck.id, checked: index == 0 %>
+        <%= deck.name %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

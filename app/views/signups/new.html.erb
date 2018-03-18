@@ -1,13 +1,23 @@
-<%= form_for @user, url: signups_path do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<div class="row">
+  <div class="col-12">
+    <div class="mt-4">
+      <%= image_tag('logo.png', class: 'img-fluid') %>
+    </div>
+    <div class="mt-5">
+      <%= form_for @user, url: signups_path do |f| %>
+        <div class="text-center mb-3">
+          <%= f.text_field :name , placeholder: "Name"%>
+        </div>
+        <div class="text-center mb-3">
+          <%= f.text_field :email, placeholder: "Email" %>
+        </div>
+        <div class="text-center mb-3">
+          <%= f.submit 'Sign up' %>
+        </div>
+      <% end %>
+      <div class="text-center">
+        <%= link_to "Back to sign in", root_path %>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <%= f.submit 'Sign up' %>
-<% end %>
-<%= javascript_pack_tag 'hello_react' %>
-<%= link_to "Back to sign in", root_path %>
+</div>

@@ -1,14 +1,19 @@
-<%= image_tag('logo.png') %>
+<div class="row">
+  <div class="col-12 mt-4">
+    <%= image_tag('logo.png', class: 'img-fluid') %>
 
-<h1>Regional Qualifiers</h1>
+    <h3 class="text-center mb-3">Regional Qualifiers</h3>
 
-<%= form_tag sessions_path do %>
-  <div>
-    <%= text_field_tag :email %>
+    <%= form_tag sessions_path do %>
+      <div class="text-center mb-3">
+        <%= text_field_tag :email, nil, placeholder: "Email here" %>
+      </div>
+      <div class="text-center mb-3">
+        <%= submit_tag 'Sign in' %>
+      </div>
+    <% end %>
+    <div class="text-center">
+      <%= link_to 'Sign up', new_signup_path %>
+    </div>
   </div>
-  <%= submit_tag 'Sign in' %>
-<% end %>
-
-<%= link_to 'Sign up', new_signup_path %>
-
-<i class="fas fa-heart"></i>
+</div>

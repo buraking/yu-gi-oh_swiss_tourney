@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   resources :decks
   resources :matches
   resources :participants
+  resources :registrations
   resources :rounds
   resources :sessions
   resources :sets
-  resources :signups
   resources :tournaments do
     resources :leaderboards
   end
   resources :users
 
-  root to: 'tournaments#index'
+  root to: 'root#show'
 end
